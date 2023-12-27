@@ -3,36 +3,179 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100;300;400;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: '#da373d',
+            },
+            backgroundImage: {
+        'bg-img': "url('/images/portrait-enjoy-happy-love-asian-600nw-2323831423.webp')",
+        'footer-texture': "url('/img/footer-texture.png')",
+            
+          },
+            
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+
+    <style>
+      body{
+        font-family: 'Noto Serif Bengali', serif;
+      }
+
+      /* tailwind.css */
+
+@keyframes colorChange {
+  0% { color: #ff0000; } /* Start color */
+  50% { color: #074b07; } /* Middle color */
+  100% { color: #ffffff; } /* End color */
+}
+
+.animated-text {
+  animation: colorChange 3s infinite; /* 3s duration, infinite loop */
+}
+
+    </style>
   </head>
-  <body class="container min-w-[250px] bg-gray-300 mx-2 md:mx-auto">
+  <body class="bg-gray-300 p-2 ">
     <!-- header  -->
+    <div><img class="w-20 my-4 animate-pulse hover:animate-none  mx-auto" src="https://babytoysbd.com/wp-content/uploads/2023/02/cropped-babytoysbd-logo.png" alt=""></div>
     <div class="text-center space-y-5">
-      <h2 class="text-4xl text-red-600 font-extrabold py-5">একটু থামুন</h2>
-      <h2 class="text-3xl font-bold pb-5">
+      <h2 class="md:text-4xl text-3xl text-pink-600 font-extrabold ">একটু থামুন</h2>
+      <h6 class="text-2xl md:text-3xl font-bold ">
         আপনার সন্তানের হাতে মোবাইল দিয়ে ধ্বংস করছেন না তো?
       </h2>
-      <p>মোবাইল ফোনের পরিবর্তে সন্তানের হাতে তুলে দিন Anti-Dou Paradise !</p>
+      <p class="text-md md:text-xl font-semibold">মোবাইল ফোনের পরিবর্তে সন্তানের হাতে তুলে দিন <br> Anti-Dou Paradise !</p>
     </div>
 
     <!-- video  -->
     <div
-      class="mt-10 mx-2 rounded-md shadow-md md:w-[1080px] md:mx-auto overflow-hidden grid justify-center item-center"
+      class="my-5 p-2  mx-auto overflow-hidden grid justify-center item-center"
     >
-      <iframe
-        width="1080"
-        height="720"
-        src="https://www.youtube.com/embed/6pR-5vx2i_s?si=fw0CJpBGT39inGwv"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-      <p class="text-left py-2">
-        (উপরের ভিডিও তে দেখুন খেলনাটি দিয়ে বাচ্চারা কিভাবে খেলা করে )
+    <iframe  class="w-full aspect-video md:min-h-[590px] min-h-[280px] rounded-md shadow-lg border-4 border-blue-400 " src="https://www.youtube.com/embed/6pR-5vx2i_s?si=fw0CJpBGT39inGwv"></iframe>
+      
+      <p class="text-left text-md py-4">
+        (উপরের ভিডিও তে দেখুন খেলনাটি দিয়ে বাচ্চারা কিভাবে খেলা করে)
       </p>
     </div>
 
-    <div class="bg-pink-200"></div>
+
+    <section class="bg-bg-img bg-cover  bg-fixed text-3xl font-extrabold text-center py-10 rounded-lg">
+     
+     <div class="py-10">
+      <h2 class="text-white text-4xl md:text-6xl font-extrabold animated-text ">অফার মূল্য - ৭৫০ টাকা</h2>
+
+      <a href="#payment-form">
+        <button  class="text-2xl p-5 text-white mt-5 bg-green-600 rounded-lg hover:bg-blue-600">অর্ডার করতে ক্লিক করুন</button>
+      </a>
+     </div>
+
+    </section>
+
+    <section class="md:flex container justify-center mx-auto p-5 md:p-16 gap-5">
+      <div class=" text-center "> 
+        <img class="rounded-lg hover:shadow-2xl  block mx-auto md:h-[540px]" src="/images/ezgif.com-optimize1.gif" alt="">
+      <h4 class="text-xl max-w-xl  md:p-8 py-5">
+        বাচ্চাদের খেলার ছলে সৃজনশীল মেধা বিকাশের জন্য বিশেষ এক ধরণের 3D ধারণাকে উদ্দীপিত করবে।
+      </h4>
+    </div>
+      <div class=" text-center  ">
+        <img class="rounded-lg hover:shadow-2xl block mx-auto md:h-[540px]" src="/images/gif-05.webp" alt="">
+        <h4 class="text-xl max-w-xl  md:p-8  py-5">
+          যেসব শিশুরা গেমে বা মোবাইলে আসক্ত সেই সব শিশুদের জন্য আদর্শ খেলনা হতে পারে এটি।        </h4>
+      </div>
+    </section>
+
+
+<section class=" rounded-lg bg-[#fff5f0] hover:shadow-2xl mb-10  justify-center">
+<div class="py-12 grid grid-cols-1  md:grid-cols-2 gap-5 justify-center max-w-7xl   mx-auto">
+  <div class="text-xl  p-2 space-y-4">
+    <h2 class="text-2xl text-center md:mt-12 mb-3">বাচ্চারা মজার ছলে খুবই সহজে খেলতে পারবে এবং সৃজনশীলতা ও বুদ্ধি বিকাশে সহায়তা করে! <br>🌈🌠</h2>
+   
+  
+  <div class="flex flex-start gap-1">
+    <img class="w-4" src="https://www.svgrepo.com/show/98634/tick.svg" alt="">মজার খেলনাগুলি আপনার সন্তানকে এই আকর্ষনীয় বিল্ডিং ইটের সাথে তাদের হাত-চোখের সমন্বয় গড়ে তুলতে সাহায্য করে।
+  </div>
+  <div class="flex flex-start gap-1">
+    <img class="w-4" src="https://www.svgrepo.com/show/98634/tick.svg" alt="">
+    বাচ্চাদের ধৈর্য এবং সৃজনশীলতা গড়ে তুলুন, কল্পনা এবং 3D স্থান ধারণা উদ্দীপিত করুন।
+  </div>
+  <div class="flex p-2 flex-start gap-1">
+    <img class="w-4" src="https://www.svgrepo.com/show/98634/tick.svg" alt="">
+    স্পিনিং গিয়ারের সাহায্যে নির্মিত নির্মাণের সেট প্রকৌশল ও প্রযুক্তির প্রতি প্রাথমিক আগ্রহকে উৎসাহিত করে।
+  </div>
+  </div>
+
+  <div>
+    <img class="rounded-lg hover:shadow-2xl w-96 mx-auto " src="/images/Anti-Dou-Paradise-101-AD-thumbnail-01-768x768.jpg" alt="">
+  </div>
+  </div>
+</section>
+
+<section class=" bg-cover  bg-fixed text-3xl font-extrabold text-center py-10 rounded-lg">
+     
+  <div class="py-10">
+   <h2 class="text-white text-4xl md:text-6xl font-extrabold animated-text ">অফার মূল্য - ৭৫০ টাকা</h2>
+
+   <a href="#payment-form">
+     <!-- <button  class="text-2xl p-5 text-white mt-5 bg-green-600 rounded-lg hover:bg-blue-600">অর্ডার করতে ক্লিক করুন</button> -->
+   </a>
+  </div>
+
+ </section>
+
+    <div class="bg-base-400 max-w-xl mx-auto min-h-[50vh]">
+      <div class="rounded-md">
+        <form id="payment-form" method="POST" action="">
+            <section>
+                <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">Shipping & Billing Information</h2>
+                <fieldset class="mb-3 bg-white shadow-lg rounded text-gray-600">
+                    <label class="flex border-b border-gray-200 h-12 py-3 items-center">
+                        <span class="text-right px-2">আপনার নাম *</span>
+                        <input name="name" class="focus:outline-none px-3" placeholder="Full Name" required="">
+                    </label>
+                    <label class="flex border-b border-gray-200 h-12 py-3 items-center">
+                        <span class="text-right px-2">মোবাইল নাম্বার *</span>
+                        <input name="mobile" type="tel" class="focus:outline-none px-3" placeholder="Mobile" required="">
+                    </label>
+                    <label class="flex border-b border-gray-200 h-12 py-3 items-center">
+                        <span class="text-right px-2">আপনার সম্পূর্ণ ঠিকানা * </span>
+                        <input name="address" class="focus:outline-none px-3" placeholder="Full Address">
+                    </label>
+                   
+                </fieldset>
+                <button>Order Placed</button>
+            </section>
+        </form>
+    </div>
+      <form action="">
+        <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">Shipping & Billing Information</h2>
+        <fieldset class="flex flex-col gap-3">
+        <input class="p-2 rounded-md placeholder-black" placeholder="আপনার নাম * " type="text">
+        <input class="p-2 rounded-md placeholder-black" placeholder="মোবাইল নাম্বার * " type="tel">
+        <input class="p-2 rounded-md placeholder-black" placeholder="আপনার সম্পূর্ণ ঠিকানা * " type="text">
+        </fieldset>
+        <button class="p-2 bg-green-600 rounded-lg  mt-10">Order Now</button>
+
+     <div>
+      <small>Country / Region <span class="text-red-600">*</span></small> <br>
+      <strong>Bangladesh</strong>
+     </div>
+        
+      </form>
+    </div>
   </body>
+ 
 </html>
