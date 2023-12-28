@@ -35,6 +35,9 @@
         font-family: 'Noto Serif Bengali', serif;
       }
 
+      .bengali-font{
+        font-family: 'Noto Serif Bengali', serif;
+      }
       /* tailwind.css */
 
 @keyframes colorChange {
@@ -146,7 +149,7 @@
       <form action="">
         <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">Shipping & Billing Information</h2>
         <fieldset class="flex flex-col gap-3">
-        <input class="p-2 border-2 rounded-md placeholder-black" placeholder="আপনার নাম * " type="text">
+        <input class="p-2 border-2 rounded-md placeholder-black" placeholder="আপনার নাম *"  type="text">
         <input class="p-2 border-2 rounded-md placeholder-black" placeholder="মোবাইল নাম্বার * " type="tel">
         <input class="p-2 border-2 rounded-md placeholder-black" placeholder="আপনার সম্পূর্ণ ঠিকানা * " type="text">
         </fieldset>
@@ -156,15 +159,85 @@
       <strong>Bangladesh</strong>
      </div>
 
-     <p></p>
+   <section>
+    <p>Your order</p>
+          <header class="flex border-b-2 border-dashed text-md font-semibold justify-between">
+             <h4>Product </h4>
+             <h4>Total</h4>
+         </header>
+        
+         <div class="flex border-b-2 border-dashed  justify-between py-5 item-center">
+          <div class="flex gap-3">
+            <img class="w-12 " src="images/Anti-Dou-Paradise-101-AD-thumbnail-01-768x768.jpg" alt=""> 
+            <h3>Anti-Dou Paradise-101pcs Miracle Bricks x 1pcs</h3>
+          </div> 
+            <h4 class="text-xl font-bold">750.০০৳</h4>
+         </div>
+         <div class=" border-b-2 border-dashed   pt-5 item-center">
+         <span class="flex justify-between"> 
+          <h3>Subtotal</h3> 
+          <h4 class="text-xl font-bold">750.০০৳</h4>
+        </span>
+
+          <div class="flex item-center my-3 justify-between">
+            <h2 class="my-10">Shipping </h2> 
+           <span>
+            <p><input type="checkbox" checked value="60" name="shipping" id="dhaka"> <label for="dhaka">শুধুমাত্র ঢাকা: <br> 60.00৳ </label> </p> <br>
+            <p><input type="checkbox" value="100" name="shipping" id="outsideDhaka"> <label  for="outsideDhaka">ঢাকার বাইরে: <br> 100.00৳ </label> </p>
+           </span>
+          
+          </div>
+
+         </div>
+          <footer class="flex my-2 text-md font-semibold justify-between">
+          <h4>Total </h4><span> <h4 class="text-xl font-bold " id="total">810.00৳ </h4><p id="totalInBengali"></p></span>
+          </footer>
+
+    
+   </section>
 
      <div class="flex justify-center">
        <button class="p-2 bg-green-600 text-2xl text-white font-bold  rounded-lg  mt-4">অর্ডার কনফার্ম করুন</button>
      </div>
+    
 
       </form>
     </div>
     </div>
+
+    <script>
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox=>{
+        checkbox.addEventListener('change',updateTotal)
+        console.log(updateTotal);
+      })
+
+      function updateTotal(e){
+        const checkbox = e.target;
+        const Subtotal =750.00;
+        let total = Subtotal;
+
+ checkboxes.forEach(otherCheckbox =>{
+  if(otherCheckbox !== checkbox){
+    otherCheckbox.checked = false;
+  }
+ })
+      
+          if(checkbox.checked){
+            total += parseFloat(checkbox.value);
+          }
+        
+
+      
+
+       const totalElement = document.getElementById('total')
+      
+
+     const totalAmout=  totalElement.textContent =total.toFixed(2) +'৳';
+         
+        
+      }
+    </script>
   </body>
  
 </html>
