@@ -198,7 +198,10 @@ color: black;
           <footer class="flex my-2 text-md font-semibold justify-between">
           <h4>Total </h4><span> <h4 class="text-xl font-bold " name="total" id="total">810.00৳ </h4></span>
           </footer>
-
+ <!-- Loading indicator -->
+ <div class="hidden text-center " id="loading-indicator">
+  Your Order is Processing... <br><span className="loading loading-spinner text-warning"></span>
+</div>
     
    </section>
 
@@ -253,13 +256,25 @@ color: black;
 
  const scriptURL ='https://script.google.com/macros/s/AKfycbyCHSuH0Y-c2eA1Vd0h99-SwuGNoMe1t9RG9adzLLF2knlg2d7hCBov3JVjEwcOwBVc/exec';
             const form = document.forms['submit-to-google-sheet']
-
+            const loadingIndicator = document.getElementById('loading-indicator');
             
+
+            function resetForm() {
+    // Reset the form
+    form.reset();
+
+    // Hide the loading indicator
+    loadingIndicator.style.display = 'none';
+  }
+
+
+
+
 
             form.addEventListener('submit',e=>{
 
               e.preventDefault()
-
+              loadingIndicator.style.display = 'block';
             const formData = new FormData(form)
             console.log(formData);
             formData.append('total',750)
@@ -269,17 +284,23 @@ color: black;
 
               fetch(scriptURL,{method:"POST",body: formData})
               .then(res=>{
-              
+res.json()
+
+             
+}).then(data=>{
+  resetForm()
               Swal.fire({
   title: "Thank you!",
   text: "Your order successfully done!",
   icon: "success"
 })
 
-             
 })
               .catch(error=> console.error('Error!', error.message))
-            })
+            }).finally(() => {
+      // Hide the loading indicator after the request is completed
+      loadingIndicator.style.display = 'none';
+    });
 
 
 
