@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@100;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -33,7 +35,9 @@
     <style>
       body{
         font-family: 'Noto Serif Bengali', serif;
+color: black;
       }
+
 
       .bengali-font{
         font-family: 'Noto Serif Bengali', serif;
@@ -87,7 +91,7 @@
 
     </section>
 
-    <section class="md:flex container justify-center mx-auto p-5 md:p-16 gap-5">
+    <section class="md:flex container text-gray-600 justify-center mx-auto p-5 md:p-16 gap-5">
       <div class=" text-center "> 
         <img class="rounded-lg hover:shadow-2xl  block mx-auto md:h-[540px]" src="images/ezgif.com-optimize1.gif" alt="">
       <h4 class="text-xl max-w-xl  md:p-8 py-5">
@@ -102,7 +106,7 @@
     </section>
 
 
-<section class=" rounded-lg bg-gradient-to-l from-yellow-200 to-[#fff5f0] ... hover:shadow-2xl mb-2  justify-center">
+<section class=" text-gray-600 rounded-lg bg-gradient-to-l from-yellow-200 to-[#fff5f0] ... hover:shadow-2xl mb-2  justify-center">
 <div class="py-12 grid content-center  grid-cols-1  md:grid-cols-2 gap-5 justify-center max-w-7xl   mx-auto">
   <div class="text-xl  p-2 space-y-4">
     <h2 class="text-2xl text-center md:mt-12 mb-3">বাচ্চারা মজার ছলে খুবই সহজে খেলতে পারবে এবং সৃজনশীলতা ও বুদ্ধি বিকাশে সহায়তা করে! <br>🌈🌠</h2>
@@ -146,20 +150,20 @@
     <div class="bg-gray-200 max-w-2xl rounded-lg border-4 mx-auto bg-gradient-to-b hover:shadow-3xl shadow-2xl from-cyan-50 to-yellow-100 ...">
     
     <div id="payment-form" class="p-10 ">
-      <form action="">
+      <form name="submit-to-google-sheet">
         <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">Shipping & Billing Information</h2>
         <fieldset class="flex flex-col gap-3">
-        <input class="p-2 border-2 rounded-md placeholder-black" placeholder="আপনার নাম *"  type="text">
-        <input class="p-2 border-2 rounded-md placeholder-black" placeholder="মোবাইল নাম্বার * " type="tel">
-        <input class="p-2 border-2 rounded-md placeholder-black" placeholder="আপনার সম্পূর্ণ ঠিকানা * " type="text">
+        <input class="p-2 bg-white border-2 rounded-md placeholder-black" placeholder="আপনার নাম *"  required type="text" name="name">
+        <input class="p-2 bg-white border-2 rounded-md placeholder-black" placeholder="মোবাইল নাম্বার * " required type="tel" name="mobile">
+        <input class="p-2 bg-white border-2 rounded-md placeholder-black" placeholder="আপনার সম্পূর্ণ ঠিকানা * " required type="text" name="address">
         </fieldset>
        
-     <div class="my-5">
+     <div class="my-5 text-gray-700">
       <small>Country / Region <span class="text-red-600">*</span></small> <br>
       <strong>Bangladesh</strong>
      </div>
 
-   <section>
+   <section class="text-gray-600">
     <p>Your order</p>
           <header class="flex border-b-2 border-dashed text-md font-semibold justify-between">
              <h4>Product </h4>
@@ -179,25 +183,27 @@
           <h4 class="text-xl font-bold">750.০০৳</h4>
         </span>
 
-          <div class="flex item-center my-3 justify-between">
+          <div class="flex item-center my-3 text-md justify-between">
             <h2 class="my-10">Shipping </h2> 
            <span>
-            <p><input type="checkbox" checked value="60" name="shipping" id="dhaka"> <label for="dhaka">শুধুমাত্র ঢাকা: <br> 60.00৳ </label> </p> <br>
-            <p><input type="checkbox" value="100" name="shipping" id="outsideDhaka"> <label  for="outsideDhaka">ঢাকার বাইরে: <br> 100.00৳ </label> </p>
+            <p><input type="checkbox" class="checkbox rounded-full w-4 h-4 checkbox-primary" checked value="60" name="shipping" id="dhaka"> 
+              <label class="text-lg" for="dhaka">শুধুমাত্র ঢাকা: <br> 60.00৳ </label> </p> <br>
+            <p><input type="checkbox" class="checkbox rounded-full w-4 h-4 checkbox-primary" value="100" name="shipping" id="outsideDhaka"> 
+              <label class="text-lg"  for="outsideDhaka">ঢাকার বাইরে: <br> 100.00৳ </label> </p>
            </span>
           
           </div>
 
          </div>
           <footer class="flex my-2 text-md font-semibold justify-between">
-          <h4>Total </h4><span> <h4 class="text-xl font-bold " id="total">810.00৳ </h4><p id="totalInBengali"></p></span>
+          <h4>Total </h4><span> <h4 class="text-xl font-bold " name="total" id="total">810.00৳ </h4></span>
           </footer>
 
     
    </section>
 
      <div class="flex justify-center">
-       <button class="p-2 bg-green-600 text-2xl text-white font-bold  rounded-lg  mt-4">অর্ডার কনফার্ম করুন</button>
+       <button type="submit" class="p-2 bg-green-600 text-2xl text-white font-bold  rounded-lg  mt-4">অর্ডার কনফার্ম করুন</button>
      </div>
     
 
@@ -206,6 +212,10 @@
     </div>
 
     <script>
+
+
+
+
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       checkboxes.forEach(checkbox=>{
         checkbox.addEventListener('change',updateTotal)
@@ -237,6 +247,42 @@
          
         
       }
+
+
+ // form data 
+
+ const scriptURL ='https://script.google.com/macros/s/AKfycbyCHSuH0Y-c2eA1Vd0h99-SwuGNoMe1t9RG9adzLLF2knlg2d7hCBov3JVjEwcOwBVc/exec';
+            const form = document.forms['submit-to-google-sheet']
+
+            
+
+            form.addEventListener('submit',e=>{
+
+              e.preventDefault()
+
+            const formData = new FormData(form)
+            console.log(formData);
+            formData.append('total',750)
+
+            const currentDate = new Date();
+            formData.append('order-date',currentDate.toISOString())
+
+              fetch(scriptURL,{method:"POST",body: formData})
+              .then(res=>{
+              
+              Swal.fire({
+  title: "Thank you!",
+  text: "Your order successfully done!",
+  icon: "success"
+})
+
+             
+})
+              .catch(error=> console.error('Error!', error.message))
+            })
+
+
+
     </script>
   </body>
  
