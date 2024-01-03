@@ -148,7 +148,164 @@ color: black;
  </section>
  
 
+    <div class="bg-gray-200 max-w-2xl rounded-lg border-4 mx-auto bg-gradient-to-b hover:shadow-3xl shadow-2xl from-cyan-50 to-yellow-100 ...">
     
+    <div id="payment-form" class="p-10 ">
+      <form name="submit-to-google-sheet">
+        <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">Shipping & Billing Information</h2>
+        <fieldset class="flex flex-col gap-3">
+        <input class="p-2 bg-white border-2 rounded-md placeholder-black" placeholder="আপনার নাম *"  required type="text" name="name">
+        <input class="p-2 bg-white border-2 rounded-md placeholder-black" placeholder="মোবাইল নাম্বার * " required type="tel" name="mobile">
+        <input class="p-2 bg-white border-2 rounded-md placeholder-black" placeholder="আপনার সম্পূর্ণ ঠিকানা * " required type="text" name="address">
+        </fieldset>
+       
+     <div class="my-5 text-gray-700">
+      <small>Country / Region <span class="text-red-600">*</span></small> <br>
+      <strong>Bangladesh</strong>
+     </div>
+
+   <section class="text-gray-600">
+    <p>Your order</p>
+          <header class="flex border-b-2 border-dashed text-md font-semibold justify-between">
+             <h4>Product </h4>
+             <h4>Total</h4>
+         </header>
+        
+         <div class="flex border-b-2 border-dashed  justify-between py-5 item-center">
+          <div class="flex gap-3">
+            <img class="w-12 " src="images/Anti-Dou-Paradise-101-AD-thumbnail-01-768x768.jpg" alt=""> 
+            <h3>Anti-Dou Paradise-101pcs Miracle Bricks x 1pcs</h3>
+          </div> 
+            <h4 class="text-xl font-bold">750.০০৳</h4>
+         </div>
+         <div class=" border-b-2 border-dashed   pt-5 item-center">
+         <span class="flex justify-between"> 
+          <h3>Subtotal</h3> 
+          <h4 class="text-xl font-bold">750.০০৳</h4>
+        </span>
+
+          <div class="flex item-center my-3 text-md justify-between">
+            <h2 class="my-10">Shipping </h2> 
+           <span>
+            <p><input type="checkbox" class="checkbox rounded-full w-4 h-4 checkbox-primary" checked value="60" name="shipping" id="dhaka"> 
+              <label class="text-lg" for="dhaka">শুধুমাত্র ঢাকা: <br> 60.00৳ </label> </p> <br>
+            <p><input type="checkbox" class="checkbox rounded-full w-4 h-4 checkbox-primary" value="100" name="shipping" id="outsideDhaka"> 
+              <label class="text-lg"  for="outsideDhaka">ঢাকার বাইরে: <br> 100.00৳ </label> </p>
+           </span>
+          
+          </div>
+
+         </div>
+          <footer class="flex my-2 text-md font-semibold justify-between">
+          <h4>Total </h4><span> <h4 class="text-xl font-bold " name="total" id="total">810.00৳ </h4></span>
+          </footer>
+ <!-- Loading indicator -->
+ <div class="hidden text-center " id="loading-indicator">
+  Your Order is Processing... <br><span className="loading loading-spinner text-warning"></span>
+</div>
+    
+   </section>
+
+     <div class="flex justify-center">
+       <button type="submit" class="p-2 bg-green-600 text-2xl text-white font-bold  rounded-lg  mt-4">অর্ডার কনফার্ম করুন</button>
+     </div>
+    
+
+      </form>
+    </div>
+    </div>
+
+    <script>
+
+
+
+
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox=>{
+        checkbox.addEventListener('change',updateTotal)
+        console.log(updateTotal);
+      })
+
+      function updateTotal(e){
+        const checkbox = e.target;
+        const Subtotal =750.00;
+        let total = Subtotal;
+
+ checkboxes.forEach(otherCheckbox =>{
+  if(otherCheckbox !== checkbox){
+    otherCheckbox.checked = false;
+  }
+ })
+      
+          if(checkbox.checked){
+            total += parseFloat(checkbox.value);
+          }
+        
+
+      
+
+       const totalElement = document.getElementById('total')
+      
+
+     const totalAmout=  totalElement.textContent =total.toFixed(2) +'৳';
+         
+        
+      }
+
+
+ // form data 
+
+ const scriptURL ='https://script.google.com/macros/s/AKfycbyCHSuH0Y-c2eA1Vd0h99-SwuGNoMe1t9RG9adzLLF2knlg2d7hCBov3JVjEwcOwBVc/exec';
+            const form = document.forms['submit-to-google-sheet']
+            const loadingIndicator = document.getElementById('loading-indicator');
+            
+
+            function resetForm() {
+    // Reset the form
+    form.reset();
+
+    // Hide the loading indicator
+    loadingIndicator.style.display = 'none';
+  }
+
+
+
+
+
+            form.addEventListener('submit',e=>{
+
+              e.preventDefault()
+              loadingIndicator.style.display = 'block';
+            const formData = new FormData(form)
+            console.log(formData);
+            formData.append('total',750)
+
+            const currentDate = new Date();
+            formData.append('order-date',currentDate.toISOString())
+
+              fetch(scriptURL,{method:"POST",body: formData})
+              .then(res=>{
+res.json()
+
+             
+}).then(data=>{
+  resetForm()
+              Swal.fire({
+  title: "Thank you!",
+  text: "Your order successfully done!",
+  icon: "success"
+})
+
+})
+              .catch(error=> console.error('Error!', error.message))
+            }).finally(() => {
+      // Hide the loading indicator after the request is completed
+      loadingIndicator.style.display = 'none';
+    });
+
+
+
+    </script>
   </body>
  
 </html>
